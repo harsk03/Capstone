@@ -7,6 +7,15 @@ __pycache__/
 venv/
 .venv/
 
+rppg_env/
+.rppg_env/
+
+heart_rate_data copy.csv
+./heart_rate_data copy.csv
+
+heart_rate_data.csv
+./heart_rate_data.csv
+
 # Build artifacts
 build/
 dist/
