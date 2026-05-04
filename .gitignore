@@ -1,0 +1,26 @@
+# Ignore everything
+*
+
+# Allow directories
+!*/
+
+# Allow .gitignore
+!.gitignore
+
+# Ignore virtual environments explicitly
+rppg_env/
+venv/
+.venv/
+
+# Allow only required files
+!age_deploy.prototxt
+!age_net.caffemodel
+!face_landmarker.task
+!gender_deploy.prototxt
+!gender_net.caffemodel
+!heart_rate_monitor.py
+!main - Copy.py
+!main.py
+!requirements.txt
+!rPPG_Poster.html
+!rppg_latex.txt
