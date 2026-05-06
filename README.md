@@ -4,8 +4,6 @@
 
 **Authors:** Harshal Kale, Snehanshu Phalle, Vinod Ravisundaram, Piyush Phaske  
 
-![Live GUI Screenshot](assets/live-gui-screenshot.png)
-
 ## Overview
 
 This project presents a real-time, non-contact heart rate monitor that uses a standard webcam to measure vital signs from facial video. It implements and fuses four distinct remote photoplethysmography (rPPG) algorithms to deliver a robust and accurate heart rate estimation.
@@ -81,6 +79,9 @@ The algorithms were validated against the **UBFC-rPPG dataset** (42 subjects). T
 1.  **Start:** Click the "Start" button to begin monitoring. Ensure your face is well-lit and centered in the camera view.
 2.  **Stop:** Click "Stop" to end the session.
 3.  **Export PDF:** After stopping, click "Export PDF Report" to save a detailed summary of the session.
+
+## Dataset Link
+https://drive.google.com/drive/folders/1o0XU4gTIo46YfwaWjIgbtCncc-oF44Xk
 
 ## Dataset Testing
 
