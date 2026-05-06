@@ -3,437 +3,205 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>rPPG Capstone Poster – MIT-WPU</title>
+<title>rPPG Capstone Poster - MIT-WPU — A2 Print</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Raleway:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
+  @page { size: A2 portrait; margin: 0; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
-    background: #f0f0f0;
+    background: #e8e8e8;
     font-family: 'Nunito', sans-serif;
     display: flex;
     justify-content: center;
-    padding: 20px;
+    padding: 24px;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  @media print {
+    body { background: #fff; padding: 0; }
+    .poster { box-shadow: none !important; border-radius: 0 !important; width: 100% !important; height: 100% !important; }
   }
 
   .poster {
-    width: 900px;
+    width: 1587px;
     background: #fff;
-    border: 3px solid #2c2c6e;
-    border-radius: 12px;
+    border: 4px solid #2c2c6e;
+    border-radius: 14px;
     overflow: hidden;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    box-shadow: 0 12px 48px rgba(0,0,0,0.22);
+    /* A2 at 96dpi = ~2245px tall; poster content must fit within that minus body padding */
+    display: flex;
+    flex-direction: column;
   }
 
-  /* ── HEADER ── */
+  /* ══ HEADER ══ */
   .header {
     background: #fff;
-    padding: 18px 28px 12px;
+    padding: 16px 36px 14px;
     display: flex;
     align-items: center;
-    gap: 16px;
-    border-bottom: 3px solid #2c2c6e;
-  }
-
-  .logo-area {
-    display: flex;
-    align-items: center;
-    gap: 0;
-  }
-
-  /* MIT-WPU SVG logo placeholder */
-  .logo-svg {
-    width: 90px;
-    height: 70px;
+    gap: 20px;
+    border-bottom: 4px solid #2c2c6e;
     flex-shrink: 0;
   }
-
-  .header-center {
-    flex: 1;
-    text-align: center;
-  }
-
+  .logo-svg { width: 170px; height: 140px; flex-shrink: 0; object-fit: contain; }
+  .header-center { flex: 1; text-align: center; }
   .poster-title {
     font-family: 'Raleway', sans-serif;
-    font-size: 30px;
+    font-size: 40px;
     font-weight: 900;
     color: #2c2c6e;
     line-height: 1.1;
     letter-spacing: 0.5px;
   }
+  .poster-title span { color: #e05c1a; }
+  .authors { margin-top: 7px; font-size: 17px; color: #333; font-weight: 600; line-height: 1.6; }
+  .faculty { font-size: 15px; color: #555; font-weight: 600; }
+  .header-icon { width: 90px; flex-shrink: 0; }
 
-  .poster-title span {
-    color: #e05c1a;
-  }
-
-  .authors {
-    margin-top: 6px;
-    font-size: 11.5px;
-    color: #333;
-    font-weight: 600;
-    line-height: 1.7;
-  }
-
-  .faculty {
-    font-size: 11px;
-    color: #555;
-    font-weight: 600;
-  }
-
-  /* tech icon top-right */
-  .header-icon {
-    width: 72px;
-    flex-shrink: 0;
-  }
-
-  /* ── BODY GRID ── */
+  /* ══ BODY GRID ══ */
   .body {
     display: grid;
-    grid-template-columns: 260px 1fr;
+    grid-template-columns: 445px 1fr;
     gap: 0;
+    flex: 1;
+    min-height: 0;
   }
-
-  /* ── LEFT COLUMN ── */
   .left-col {
-    border-right: 2px solid #2c2c6e;
-    padding: 14px 12px;
+    border-right: 3px solid #2c2c6e;
+    padding: 14px 16px;
     display: flex;
     flex-direction: column;
     gap: 12px;
   }
-
-  /* ── RIGHT COLUMN ── */
   .right-col {
-    padding: 14px 14px;
+    padding: 14px 18px;
     display: flex;
     flex-direction: column;
     gap: 12px;
   }
 
-  /* ── SECTION BOX ── */
-  .section-box {
-    border: 2px solid #2c2c6e;
-    border-radius: 10px;
-    overflow: hidden;
-  }
-
-  .section-header {
-    display: flex;
-    align-items: center;
-    gap: 0;
-  }
-
+  /* ══ SECTION BOX ══ */
+  .section-box { border: 2.5px solid #2c2c6e; border-radius: 10px; overflow: hidden; }
+  .section-header { display: flex; align-items: center; }
   .section-letter {
     background: #2c2c6e;
     color: #fff;
     font-weight: 900;
-    font-size: 15px;
-    padding: 5px 10px;
+    font-size: 20px;
+    padding: 6px 13px;
     font-family: 'Raleway', sans-serif;
     flex-shrink: 0;
   }
-
   .section-title {
     background: #f4f4fb;
     color: #2c2c6e;
     font-family: 'Raleway', sans-serif;
     font-weight: 800;
-    font-size: 13.5px;
-    padding: 5px 14px;
+    font-size: 18px;
+    padding: 6px 16px;
     flex: 1;
-    border-left: 2px solid #2c2c6e;
+    border-left: 2.5px solid #2c2c6e;
     letter-spacing: 0.3px;
   }
-
-  .section-body {
-    padding: 10px 12px;
-    font-size: 10.5px;
-    color: #222;
-    line-height: 1.55;
-  }
-
+  .section-body { padding: 10px 14px; font-size: 14.5px; color: #222; line-height: 1.5; }
   .section-body p { margin-bottom: 6px; }
   .section-body p:last-child { margin-bottom: 0; }
+  .section-body strong { color: #2c2c6e; font-weight: 800; }
 
-  .section-body strong {
-    color: #2c2c6e;
-    font-weight: 800;
-  }
+  /* ══ LISTS ══ */
+  .feat-list { list-style: none; padding: 0; margin: 0; }
+  .feat-list li { display: flex; align-items: flex-start; gap: 7px; font-size: 14px; color: #222; margin-bottom: 5px; line-height: 1.45; }
+  .feat-list li::before { content: "◆"; color: #2c2c6e; font-size: 10px; margin-top: 3px; flex-shrink: 0; }
 
-  /* ── BULLET LIST ── */
-  .feat-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
+  .tech-list { list-style: none; padding: 0; margin: 0; }
+  .tech-list li { display: flex; align-items: flex-start; gap: 7px; font-size: 13.5px; color: #222; margin-bottom: 5px; line-height: 1.45; }
+  .tech-list li::before { content: "📌"; font-size: 13px; flex-shrink: 0; }
 
-  .feat-list li {
-    display: flex;
-    align-items: flex-start;
-    gap: 6px;
-    font-size: 10.5px;
-    color: #222;
-    margin-bottom: 5px;
-    line-height: 1.45;
-  }
+  .gap-list { list-style: none; padding: 0; margin: 0; }
+  .gap-list li { display: flex; align-items: flex-start; gap: 7px; font-size: 13.5px; color: #222; margin-bottom: 5px; line-height: 1.45; }
+  .gap-list li::before { content: "→"; color: #e05c1a; font-size: 13px; font-weight: 900; flex-shrink: 0; }
+  .gap-list strong { color: #2c2c6e; font-weight: 800; }
 
-  .feat-list li::before {
-    content: "◆";
-    color: #2c2c6e;
-    font-size: 8px;
-    margin-top: 2px;
-    flex-shrink: 0;
-  }
+  /* ══ USE CASES GRID ══ */
+  .use-cases-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; padding: 10px 12px; }
+  .use-case-card { background: #2c2c6e; border-radius: 9px; padding: 10px 12px; color: #fff; }
+  .use-case-card.light { background: #f4f4fb; border: 2px solid #2c2c6e; color: #2c2c6e; }
+  .use-case-title { font-weight: 800; font-size: 13.5px; margin-bottom: 5px; font-family: 'Raleway', sans-serif; letter-spacing: 0.2px; }
+  .use-case-card ul { list-style: none; padding: 0; margin: 0; }
+  .use-case-card ul li { font-size: 12.5px; line-height: 1.45; margin-bottom: 3px; padding-left: 12px; position: relative; }
+  .use-case-card ul li::before { content: "•"; position: absolute; left: 2px; opacity: 0.7; }
 
-  /* ── TECH LIST (red pins like original) ── */
-  .tech-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
+  /* ══ FUN FACT SECTION ══ */
+  .fun-fact-section { border: 2.5px solid #2c2c6e; border-radius: 10px; overflow: hidden; }
+  .fun-fact-body { padding: 10px 16px; display: flex; gap: 14px; align-items: flex-start; }
+  .fun-fact-text { flex: 1; }
+  .fun-fact-title { font-family: 'Raleway', sans-serif; font-size: 16px; font-weight: 900; color: #2c2c6e; margin-bottom: 5px; }
+  .fun-fact-body p { font-size: 13.5px; color: #333; line-height: 1.5; }
 
-  .tech-list li {
-    display: flex;
-    align-items: flex-start;
-    gap: 6px;
-    font-size: 10px;
-    color: #222;
-    margin-bottom: 5px;
-    line-height: 1.45;
-  }
+  /* ══ RESULTS TABLE ══ */
+  .results-table { width: 100%; border-collapse: collapse; font-size: 13.5px; margin-top: 6px; }
+  .results-table th { background: #2c2c6e; color: #fff; padding: 5px 8px; font-weight: 700; text-align: center; font-size: 13.5px; }
+  .results-table td { border: 1px solid #ccc; padding: 4px 8px; text-align: center; font-size: 13.5px; }
+  .results-table tr:nth-child(even) td { background: #f0f0f8; }
+  .results-table tr.highlight td { background: #e05c1a; color: #fff; font-weight: 700; }
 
-  .tech-list li::before {
-    content: "📌";
-    font-size: 10px;
-    flex-shrink: 0;
-  }
-
-  /* ── USE CASES GRID ── */
-  .use-cases-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-    padding: 10px 12px;
-  }
-
-  .use-case-card {
-    background: #2c2c6e;
-    border-radius: 8px;
-    padding: 9px 10px;
-    color: #fff;
-  }
-
-  .use-case-card.light {
-    background: #f4f4fb;
-    border: 1.5px solid #2c2c6e;
-    color: #2c2c6e;
-  }
-
-  .use-case-title {
-    font-weight: 800;
-    font-size: 10.5px;
-    margin-bottom: 5px;
-    font-family: 'Raleway', sans-serif;
-    letter-spacing: 0.2px;
-  }
-
-  .use-case-card ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .use-case-card ul li {
-    font-size: 9.5px;
-    line-height: 1.45;
-    margin-bottom: 3px;
-    padding-left: 10px;
-    position: relative;
-  }
-
-  .use-case-card ul li::before {
-    content: "•";
-    position: absolute;
-    left: 1px;
-    color: inherit;
-    opacity: 0.7;
-  }
-
-  /* ── FUN FACT / HIGHLIGHT BOX ── */
-  .fun-fact-section {
-    border: 2px solid #2c2c6e;
-    border-radius: 10px;
-    overflow: hidden;
-  }
-
-  .fun-fact-body {
-    padding: 10px 14px;
-    display: flex;
-    gap: 12px;
-    align-items: flex-start;
-  }
-
-  .fun-fact-text {
-    flex: 1;
-  }
-
-  .fun-fact-title {
-    font-family: 'Raleway', sans-serif;
-    font-size: 12.5px;
-    font-weight: 900;
-    color: #2c2c6e;
-    margin-bottom: 5px;
-  }
-
-  .fun-fact-body p {
-    font-size: 10px;
-    color: #333;
-    line-height: 1.55;
-  }
-
-  /* ── RESULTS TABLE ── */
-  .results-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 10px;
-    margin-top: 6px;
-  }
-
-  .results-table th {
-    background: #2c2c6e;
-    color: #fff;
-    padding: 4px 6px;
-    font-weight: 700;
-    text-align: center;
-    font-size: 10px;
-  }
-
-  .results-table td {
-    border: 1px solid #ccc;
-    padding: 3px 6px;
-    text-align: center;
-    font-size: 10px;
-  }
-
-  .results-table tr:nth-child(even) td {
-    background: #f0f0f8;
-  }
-
-  .results-table tr.highlight td {
-    background: #e05c1a;
-    color: #fff;
-    font-weight: 700;
-  }
-
-  /* ── PIPELINE VISUAL ── */
+  /* ══ PIPELINE ══ */
   .pipeline {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    flex-wrap: wrap;
     gap: 4px;
-    padding: 8px 10px;
+    padding: 9px 12px;
     background: #f4f4fb;
     border-radius: 0 0 8px 8px;
+    flex-wrap: nowrap;
   }
+  .pipe-step { background: #2c2c6e; color: #fff; border-radius: 7px; padding: 6px 8px; font-size: 12px; font-weight: 700; text-align: center; flex: 1; line-height: 1.35; }
+  .pipe-arrow { color: #2c2c6e; font-size: 18px; font-weight: 900; flex-shrink: 0; }
 
-  .pipe-step {
-    background: #2c2c6e;
-    color: #fff;
-    border-radius: 6px;
-    padding: 5px 8px;
-    font-size: 9px;
-    font-weight: 700;
-    text-align: center;
-    flex: 1;
-    min-width: 70px;
-    position: relative;
-  }
-
-  .pipe-arrow {
-    color: #2c2c6e;
-    font-size: 14px;
-    font-weight: 900;
-  }
-
-  /* ── REFERENCES ── */
-  .references-bar {
-    background: #f4f4fb;
-    border-top: 2px solid #2c2c6e;
-    padding: 8px 24px;
-  }
-
-  .references-bar h4 {
-    font-family: 'Raleway', sans-serif;
-    font-size: 11px;
-    font-weight: 800;
-    color: #2c2c6e;
-    margin-bottom: 4px;
-  }
-
-  .references-bar p {
-    font-size: 9px;
-    color: #444;
-    line-height: 1.6;
-  }
-
-  /* ── PIPELINE CHART SVG area ── */
-  .snr-bars {
-    display: flex;
-    gap: 4px;
-    align-items: flex-end;
-    height: 60px;
-    padding: 6px 10px 0;
-    margin-top: 4px;
-  }
-
-  .bar-wrap {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex: 1;
-    gap: 2px;
-  }
-
-  .bar {
-    width: 100%;
-    background: #2c2c6e;
-    border-radius: 3px 3px 0 0;
-    transition: height 0.3s;
-  }
-
+  /* ══ SNR BARS ══ */
+  .snr-bars { display: flex; gap: 5px; align-items: flex-end; height: 76px; padding: 6px 12px 0; margin-top: 4px; }
+  .bar-wrap { display: flex; flex-direction: column; align-items: center; flex: 1; gap: 2px; }
+  .bar { width: 100%; background: #2c2c6e; border-radius: 4px 4px 0 0; }
   .bar.accent { background: #e05c1a; }
+  .bar-label { font-size: 11px; color: #555; text-align: center; font-weight: 700; }
+  .bar-val { font-size: 12px; color: #2c2c6e; font-weight: 800; text-align: center; }
 
-  .bar-label {
-    font-size: 8px;
-    color: #555;
-    text-align: center;
-    font-weight: 700;
+  /* ══ HRV ══ */
+  .hrv-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; padding: 8px 0 4px; }
+  .hrv-card { background: #f4f4fb; border: 2px solid #d0d0e8; border-radius: 7px; padding: 7px 10px; text-align: center; }
+  .hrv-metric { font-size: 18px; font-weight: 900; color: #2c2c6e; font-family: 'Raleway', sans-serif; }
+  .hrv-name { font-size: 12px; font-weight: 800; color: #555; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
+  .hrv-norm { font-size: 11px; color: #1a7a4a; font-weight: 700; margin-top: 3px; }
+
+  /* ══ BPM ALERTS ══ */
+  .alert-row { display: flex; gap: 5px; flex-wrap: wrap; padding: 5px 0 3px; }
+  .alert-chip { font-size: 11px; font-weight: 800; padding: 4px 9px; border-radius: 10px; white-space: nowrap; font-family: 'Nunito', sans-serif; }
+
+  /* ══ DIVIDERS ══ */
+  .divider { border: none; border-top: 2px solid #d0d0e8; margin: 6px 0; }
+  .divider-strong { border: none; border-top: 2px solid #2c2c6e; margin: 8px 0; }
+
+  /* ══ SECTION F LAYOUT ══ */
+  .results-layout { display: flex; gap: 0; align-items: stretch; padding: 10px 14px; }
+  .results-left { flex: 1.25; padding-right: 16px; border-right: 2px solid #2c2c6e; }
+  .results-right { flex: 0.75; padding-left: 16px; }
+  .subsection-heading {
+    font-size: 13.5px; font-weight: 800; color: #2c2c6e;
+    margin: 8px 0 4px; font-family: 'Raleway', sans-serif; letter-spacing: 0.2px;
   }
 
-  .bar-val {
-    font-size: 9px;
-    color: #2c2c6e;
-    font-weight: 800;
-    text-align: center;
-  }
+  /* ══ GUI IMAGE ══ */
+  .gui-image { width: 68%; height: auto; border-radius: 9px; border: 2px solid #d0d0e8; margin: 8px 0 4px; display: block; }
+  .gui-caption { font-size: 12px; color: #555; text-align: center; line-height: 1.45; padding: 0 4px; }
 
-  /* Divider line */
-  .divider { border: none; border-top: 1.5px solid #d0d0e8; margin: 6px 0; }
-
-  /* image placeholder */
-  .img-placeholder {
-    background: linear-gradient(135deg, #e8e8f5 0%, #d0d0e8 100%);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 9px;
-    color: #555;
-    font-weight: 700;
-    border: 1.5px solid #bbb;
-    text-align: center;
-  }
+  /* ══ REFERENCES ══ */
+  .references-bar { background: #f4f4fb; border-top: 3px solid #2c2c6e; padding: 8px 32px; flex-shrink: 0; }
+  .references-bar h4 { font-family: 'Raleway', sans-serif; font-size: 14px; font-weight: 800; color: #2c2c6e; margin-bottom: 4px; }
+  .references-bar p { font-size: 12px; color: #444; line-height: 1.6; }
 </style>
 </head>
 <body>
@@ -441,43 +209,25 @@
 
   <!-- ══ HEADER ══ -->
   <div class="header">
-    <!-- MIT-WPU Logo (SVG recreation matching original style) -->
-    <div class="logo-area">
-      <svg class="logo-svg" viewBox="0 0 110 75" xmlns="http://www.w3.org/2000/svg">
-        <!-- Dome building icon -->
-        <ellipse cx="35" cy="18" rx="18" ry="5" fill="#2c2c6e"/>
-        <rect x="17" y="18" width="36" height="20" rx="2" fill="#2c2c6e"/>
-        <!-- dome shape -->
-        <path d="M17,18 Q35,3 53,18" fill="#2c2c6e"/>
-        <!-- windows -->
-        <rect x="22" y="22" width="5" height="7" rx="1" fill="#fff"/>
-        <rect x="31" y="22" width="5" height="7" rx="1" fill="#fff"/>
-        <rect x="40" y="22" width="5" height="7" rx="1" fill="#fff"/>
-        <!-- base -->
-        <rect x="13" y="38" width="44" height="4" rx="1" fill="#2c2c6e"/>
-        <!-- MIT-WPU text -->
-        <rect x="0" y="46" width="110" height="22" rx="4" fill="#e05c1a"/>
-        <text x="55" y="62" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="13" font-weight="900" fill="#fff" letter-spacing="1">MIT-WPU</text>
-      </svg>
-    </div>
-
+    <img src="assets/mit-wpu-logo.png" alt="MIT-WPU Logo" class="logo-svg">
     <div class="header-center">
-      <div class="poster-title">Facial Video-Based Heart Rate Monitoring<br><span>Using Multi-Method rPPG Fusion</span></div>
+      <div class="poster-title">
+        Facial Video-Based Heart Rate Monitoring<br>
+        <span>with HRV, Stress Analysis &amp; rPPG Fusion</span>
+      </div>
       <div class="authors">
-        Harshal Kale : PG-05 (1032222441) &nbsp;&nbsp; Snehanshu Phalle : PG-XX (1032222859)<br>
-        Vinod Ravisundaram  : PG-XX (1032222817) &nbsp;&nbsp; Piyush Phaske  : PG-XX (1032222518)<br>
-        <span class="faculty">Faculty : Dr Aparna Kamble</span>
+        Harshal Kale : PG-05 (1032222441) &nbsp;&nbsp; Snehanshu Phalle : PG-26 (1032222859)<br>
+        Vinod Ravisundaram : PG-24 (1032222817) &nbsp;&nbsp; Piyush Phaske : PG-08 (1032222518)<br>
+        <span class="faculty">Guide: Dr. Aparna Kamble &nbsp;·&nbsp; B.Tech Capstone 2026 &nbsp;·&nbsp; Panel G</span>
       </div>
     </div>
-
-    <!-- Tech icon top-right -->
     <svg class="header-icon" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
-      <!-- heartbeat + camera symbol -->
       <rect x="5" y="15" width="70" height="50" rx="8" fill="none" stroke="#2c2c6e" stroke-width="2.5"/>
       <circle cx="40" cy="40" r="15" fill="none" stroke="#e05c1a" stroke-width="2"/>
       <circle cx="40" cy="40" r="8" fill="#e05c1a" opacity="0.3"/>
-      <!-- heartbeat line -->
-      <polyline points="10,40 22,40 26,28 30,52 34,35 38,45 42,40 70,40" fill="none" stroke="#2c2c6e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <polyline points="10,40 22,40 26,28 30,52 34,35 38,45 42,40 70,40"
+                fill="none" stroke="#2c2c6e" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
   </div>
 
@@ -495,27 +245,24 @@
         </div>
         <div class="section-body">
           <p><strong>Remote Photoplethysmography (rPPG)</strong> recovers heart rate from subtle periodic color changes in facial skin caused by pulsatile blood flow, captured by a standard webcam — no contact required.</p>
-          <p>Cardiovascular diseases claim <strong>~17.9 million lives annually</strong>. Traditional HR sensors (ECG, pulse oximeters) demand physical contact, limiting comfort and accessibility.</p>
-          <p>Our system enables <strong>real-time, hardware-free heart rate monitoring</strong> using only a webcam, making it ideal for telemedicine, home healthcare, and fitness tracking.</p>
+          <p>Existing systems implement only a single estimation method and provide raw BPM with no clinical context. This project addresses <strong>eight literature-identified gaps</strong> by implementing four signal processing methods, adding <strong>HRV analysis</strong>, stress detection, and automated PDF clinical reporting — all on consumer hardware, no GPU needed.</p>
         </div>
       </div>
 
-      <!-- B. Key Features -->
+      <!-- B. Research Gaps -->
       <div class="section-box">
         <div class="section-header">
           <div class="section-letter">B.</div>
-          <div class="section-title">Key Features</div>
+          <div class="section-title">Research Gaps Addressed</div>
         </div>
         <div class="section-body">
-          <ul class="feat-list">
-            <li>4-Algorithm Parallel rPPG Fusion (FFT, CHROM, POS, ICA)</li>
-            <li>SNR-Weighted Output Averaging</li>
-            <li>478-Point MediaPipe Face Mesh</li>
-            <li>Multi-Region ROI Extraction (forehead + cheeks)</li>
-            <li>Kalman Filter BPM Smoothing</li>
-            <li>Age &amp; Gender-Aware HR Classification</li>
-            <li>Live PyQt5 GUI with CSV Logging</li>
-            <li>No GPU Required — Runs on Commodity Hardware</li>
+          <ul class="gap-list">
+            <li><strong>Lighting sensitivity</strong> — Lighting Quality Assessor (CLAHE + LAB channel)</li>
+            <li><strong>Motion artifacts</strong> — Optical flow motion gate + landmark stability check</li>
+            <li><strong>Single method</strong> — FFT, CHROM, ICA, POS fused via SNR weighting</li>
+            <li><strong>No clinical output</strong> — HRV metrics, stress detection, PDF report</li>
+            <li><strong>GPU dependency</strong> — CPU-only pipeline at 30 fps on i5 laptop</li>
+            <li><strong>Single ROI</strong> — Forehead + Bilateral Cheeks via MediaPipe FaceMesh</li>
           </ul>
         </div>
       </div>
@@ -528,56 +275,74 @@
         </div>
         <div class="section-body">
           <ul class="tech-list">
-            <li><strong>MediaPipe:</strong> 478-point facial landmark mesh for stable ROI tracking</li>
-            <li><strong>OpenCV:</strong> Frame capture, HSV skin masking &amp; CLAHE preprocessing</li>
-            <li><strong>NumPy / SciPy:</strong> FFT, Savitzky–Golay filtering &amp; signal processing</li>
-            <li><strong>PyQt5 + PyQtGraph:</strong> Real-time GUI, live waveform &amp; BPM plots</li>
-            <li><strong>GilLevi DNN (Caffe):</strong> Age bracket &amp; gender classification</li>
-            <li><strong>Python 3.10:</strong> Single standalone application, no GPU needed</li>
+            <li><strong>MediaPipe FaceMesh:</strong> 468-point 3D landmarks for stable ROI tracking.</li>
+            <li><strong>OpenCV:</strong> Frame capture, color space conversion, and CLAHE preprocessing.</li>
+            <li><strong>NumPy / SciPy:</strong> FFT, Butterworth filtering, detrending, Savitzky-Golay smoothing.</li>
+            <li><strong>PyQt5 / PyQtGraph:</strong> Real-time GUI, live plotting, user interface.</li>
+            <li><strong>ReportLab:</strong> Clinical PDF report generation (&lt;2 sec).</li>
+            <li><strong>Caffe DNN:</strong> Age bracket (74% acc.) &amp; gender classification (89% acc.).</li>
+            <li><strong>scikit-learn (FastICA):</strong> Blind source separation for low-SNR recovery.</li>
           </ul>
         </div>
       </div>
 
-      <!-- SNR Improvement bar chart -->
+      <!-- SNR Improvement -->
       <div class="section-box">
         <div class="section-header">
-          <div class="section-letter" style="background:#2c2c6e;"></div>
+          <div class="section-letter" style="background:#2c2c6e;">&nbsp;</div>
           <div class="section-title">SNR Improvement by Stage</div>
         </div>
-        <div class="section-body" style="padding-bottom:4px;">
+        <div class="section-body" style="padding-bottom:6px;">
           <div class="snr-bars">
             <div class="bar-wrap">
               <div class="bar-val">7.4</div>
-              <div class="bar" style="height:24px;"></div>
+              <div class="bar" style="height:28px;"></div>
               <div class="bar-label">Raw</div>
             </div>
             <div class="bar-wrap">
-              <div class="bar-val">12.8</div>
-              <div class="bar" style="height:34px;"></div>
-              <div class="bar-label">Gauss</div>
+              <div class="bar-val">10.1</div>
+              <div class="bar" style="height:36px;"></div>
+              <div class="bar-label">Multi-ROI</div>
             </div>
             <div class="bar-wrap">
-              <div class="bar-val">15.2</div>
-              <div class="bar" style="height:40px;"></div>
+              <div class="bar-val">12.8</div>
+              <div class="bar" style="height:44px;"></div>
               <div class="bar-label">CLAHE</div>
             </div>
             <div class="bar-wrap">
               <div class="bar-val">16.7</div>
-              <div class="bar" style="height:46px;"></div>
+              <div class="bar" style="height:56px;"></div>
               <div class="bar-label">S-G</div>
             </div>
             <div class="bar-wrap">
               <div class="bar-val">18.6</div>
-              <div class="bar accent" style="height:54px;"></div>
+              <div class="bar accent" style="height:66px;"></div>
               <div class="bar-label">BPF</div>
             </div>
           </div>
-          <p style="font-size:9px;color:#666;text-align:center;margin-top:4px;">Total improvement: <strong>+11.2 dB</strong> (SNR in dB)</p>
+          <p style="font-size:12px;color:#666;text-align:center;margin-top:5px;">
+            Total improvement: <strong>+11.2 dB</strong> (SNR in dB)
+          </p>
         </div>
       </div>
 
-    </div>
-    <!-- ════ end LEFT ════ -->
+      <!-- G. Clinical Significance & Future Scope -->
+      <div class="fun-fact-section">
+        <div class="section-header">
+          <div class="section-letter">G.</div>
+          <div class="section-title">Clinical Significance &amp; Future Scope</div>
+        </div>
+        <div class="fun-fact-body">
+          <div class="fun-fact-text">
+            <div class="fun-fact-title">A Webcam as Your Cardiologist! ❤️</div>
+            <p>Our system turns any standard laptop camera into a real-time, non-contact heart monitor with clinically relevant accuracy — no wearable, no electrode, no cost. It runs entirely in Python on a basic laptop, making it accessible for home health monitoring and telemedicine.</p>
+            <hr class="divider">
+            <p><strong>Future directions:</strong> End-to-end deep learning models (PhysNet, RhythmNet) as a 5th fusion method; SpO₂ and respiratory rate extraction; Android/iOS deployment via Flutter + ONNX; Raspberry Pi 4 for embedded kiosks; Streamlit web dashboard with REST API for telemedicine platform integration.</p>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end LEFT -->
 
     <!-- ════ RIGHT COLUMN ════ -->
     <div class="right-col">
@@ -591,86 +356,81 @@
         <div class="pipeline">
           <div class="pipe-step">📷 Webcam<br>Frame Capture</div>
           <div class="pipe-arrow">→</div>
-          <div class="pipe-step">🧠 MediaPipe<br>Face Mesh</div>
+          <div class="pipe-step">💡 Lighting<br>Quality Check</div>
           <div class="pipe-arrow">→</div>
-          <div class="pipe-step">🎭 Multi-ROI<br>Extraction</div>
+          <div class="pipe-step">🧠 MediaPipe<br>FaceMesh</div>
           <div class="pipe-arrow">→</div>
-          <div class="pipe-step">⚙️ Signal<br>Preprocessing</div>
+          <div class="pipe-step">🎭 3-ROI Extract<br>+ Skin Calib</div>
+          <div class="pipe-arrow">→</div>
+          <div class="pipe-step">⚙️ S-G Smooth<br>+ BPF</div>
           <div class="pipe-arrow">→</div>
           <div class="pipe-step">📈 4-Method<br>rPPG Fusion</div>
           <div class="pipe-arrow">→</div>
-          <div class="pipe-step" style="background:#e05c1a;">❤️ Kalman<br>+ HR Status</div>
+          <div class="pipe-step" style="background:#e05c1a;">❤️ HRV, Stress<br>&amp; PDF Report</div>
         </div>
       </div>
 
-      <!-- E. Methodology – 6-panel grid matching HPC poster's use-cases layout -->
+      <!-- E. Methodology -->
       <div class="section-box">
         <div class="section-header">
           <div class="section-letter">E.</div>
           <div class="section-title">Methodology &amp; Algorithms</div>
         </div>
         <div class="use-cases-grid">
-
           <div class="use-case-card">
-            <div class="use-case-title">1) FFT – Eulerian Path</div>
+            <div class="use-case-title">1) FFT – Green Channel</div>
             <ul>
-              <li>Gaussian pyramid temporal amplification</li>
-              <li>Band-pass filter: 0.67–3.33 Hz (40–200 BPM)</li>
-              <li>Dominant frequency → BPM conversion</li>
-              <li>Why? Lightweight; coarse but fast baseline</li>
+              <li>Green channel has strongest plethysmographic signal.</li>
+              <li>Band-pass filter: 0.67–3.33 Hz (40–200 BPM).</li>
+              <li>Dominant frequency in FFT gives BPM. SNR-weighted; scaled ×0.25 in fusion.</li>
+              <li><strong>Role:</strong> Fast, stable baseline.</li>
             </ul>
           </div>
-
           <div class="use-case-card light">
             <div class="use-case-title">2) CHROM Algorithm</div>
             <ul>
-              <li>Projects RGB onto chrominance axes Xs, Ys</li>
-              <li>Adaptive ratio α cancels specular reflection</li>
-              <li>Savitzky–Golay pre-smoothing applied</li>
-              <li>Why? Best at suppressing lighting artifacts</li>
+              <li>Xs = 3Rn − 2Gn, Ys = 1.5Rn + Gn − 1.5Bn.</li>
+              <li>Adaptive α = σ(Xs)/σ(Ys); S = Xs − αYs.</li>
+              <li>Cancels specular reflection &amp; illumination changes.</li>
+              <li><strong>Role:</strong> Best in variable lighting.</li>
             </ul>
           </div>
-
           <div class="use-case-card light">
             <div class="use-case-title">3) POS Algorithm</div>
             <ul>
-              <li>Planes orthogonal to skin-tone direction</li>
-              <li>S1 = Gn−Bn, S2 = Gn+Bn−2Rn</li>
-              <li>Adaptive β weighting of planes</li>
-              <li>Why? Robust to skin-tone variation &amp; motion</li>
+              <li>H1 = G−B, H2 = G+B−2R; β = σ(H1)/σ(H2).</li>
+              <li>S = H1 + β·H2 (skin-tone orthogonal projection).</li>
+              <li>Robust to slow illumination drift; computationally lightest.</li>
+              <li><strong>Role:</strong> Best in motion-stable scenes.</li>
             </ul>
           </div>
-
           <div class="use-case-card">
             <div class="use-case-title">4) ICA – Blind Source Separation</div>
             <ul>
-              <li>Fixed-point deflation with tanh nonlinearity</li>
-              <li>Whitens 3-channel covariance matrix</li>
-              <li>Activated only when base SNR &lt; 0 dB</li>
-              <li>Why? Excels during high-motion scenarios</li>
+              <li>Fixed-point FastICA via RGB covariance eigendecomposition.</li>
+              <li>Component selected by max pulse-band power.</li>
+              <li>Conditionally run when methods disagree (&gt;12 BPM).</li>
+              <li><strong>Role:</strong> Signal recovery in low-SNR.</li>
             </ul>
           </div>
-
           <div class="use-case-card">
-            <div class="use-case-title">5) SNR-Weighted Fusion</div>
+            <div class="use-case-title">5) HRV &amp; Stress Metrics</div>
             <ul>
-              <li>wm = 10^(SNRm/10) linear power weight</li>
-              <li>Agreement bonus: methods within 8 BPM</li>
-              <li>Gates: FFT/ICA ≥ −1 dB, CHROM/POS ≥ 0 dB</li>
-              <li>Why? Always outperforms any single method</li>
+              <li><strong>SDNN / RMSSD / pNN50</strong> from RR intervals (60s window).</li>
+              <li><strong>Stress Score:</strong> 100 − clamp(RMSSD/50 × 100); 4 levels.</li>
+              <li><strong>Alert System:</strong> 7-level BPM classification.</li>
+              <li><strong>Role:</strong> Clinical-grade wellness insight.</li>
             </ul>
           </div>
-
           <div class="use-case-card light">
-            <div class="use-case-title">6) Age/Gender Classification</div>
+            <div class="use-case-title">6) SNR-Weighted Fusion</div>
             <ul>
-              <li>GilLevi AgeNet + GenderNet (Caffe DNN)</li>
-              <li>Runs every 30 frames on 227×227 crop</li>
-              <li>7 age brackets × 2 genders → HR status</li>
-              <li>Why? Clinically personalised HR labeling</li>
+              <li>Weight per method: w = 10^(SNR/10); FFT scaled ×0.25.</li>
+              <li>Agreement bonus ×2 for methods within 8 BPM of median.</li>
+              <li>Final BPM weighted average + Kalman filter (R=2.0).</li>
+              <li><strong>Role:</strong> Maximizes accuracy and stability.</li>
             </ul>
           </div>
-
         </div>
       </div>
 
@@ -678,74 +438,104 @@
       <div class="section-box">
         <div class="section-header">
           <div class="section-letter">F.</div>
-          <div class="section-title">Experimental Results</div>
+          <div class="section-title">Experimental Results — UBFC-rPPG Dataset</div>
         </div>
-        <div class="section-body" style="display:flex; gap:14px; align-items:flex-start;">
-          <div style="flex:1.2;">
-            <p style="font-size:10px; margin-bottom:4px;"><strong>Setup:</strong> 5 subjects · Intel Core i5 · 720p webcam · 30 fps · No GPU · Indoor fluorescent lighting · Fingertip oximeter ground truth</p>
+        <div class="results-layout">
+          <!-- LEFT: Table + HRV + Alerts -->
+          <div class="results-left">
+            <p style="font-size:13.5px; margin-bottom:5px;">
+              <strong>Dataset:</strong> UBFC-rPPG (42 subjects) · CMS50E pulse oximeter GT · <strong>Window:</strong> 10s sliding · No GPU
+            </p>
             <table class="results-table">
               <thead>
-                <tr><th>Method</th><th>Rest</th><th>Post-Exer.</th><th>Motion</th><th>Avg MAE</th></tr>
+                <tr><th>Method</th><th>MAE (BPM)</th><th>RMSE (BPM)</th><th>Pearson r</th></tr>
               </thead>
               <tbody>
-                <tr><td>FFT (Eulerian)</td><td>4.1</td><td>6.8</td><td>9.2</td><td>6.7</td></tr>
-                <tr><td>CHROM</td><td>3.2</td><td>5.4</td><td>7.1</td><td>5.2</td></tr>
-                <tr><td>POS</td><td>3.5</td><td>5.1</td><td>6.8</td><td>5.1</td></tr>
-                <tr><td>ICA</td><td>4.8</td><td>5.9</td><td>5.9</td><td>5.5</td></tr>
-                <tr class="highlight"><td>SNR Fusion (Ours)</td><td>2.7</td><td>4.2</td><td>5.0</td><td>3.9</td></tr>
+                <tr><td>FFT (Green)</td><td>8.11</td><td>10.92</td><td>0.891</td></tr>
+                <tr><td>CHROM</td><td>5.43</td><td>7.88</td><td>0.943</td></tr>
+                <tr><td>POS</td><td>6.02</td><td>8.51</td><td>0.930</td></tr>
+                <tr><td>ICA</td><td>7.50</td><td>9.80</td><td>0.912</td></tr>
+                <tr class="highlight"><td>★ SNR Fusion</td><td>4.15</td><td>5.97</td><td>0.973</td></tr>
               </tbody>
             </table>
-            <p style="font-size:9px;color:#666;margin-top:4px;">Mean Absolute Error (BPM). Lower is better. Fusion outperforms all baselines by 1.2–2.8 BPM.</p>
+
+            <hr class="divider-strong" style="margin-top:10px;">
+            <div class="subsection-heading">HRV Output — Representative Session</div>
+            <div class="hrv-row">
+              <div class="hrv-card">
+                <div class="hrv-metric">52.4 ms</div>
+                <div class="hrv-name">SDNN</div>
+                <div class="hrv-norm">Normal &gt; 50 ms ✓</div>
+              </div>
+              <div class="hrv-card">
+                <div class="hrv-metric">31.2 ms</div>
+                <div class="hrv-name">RMSSD</div>
+                <div class="hrv-norm">Normal &gt; 20 ms ✓</div>
+              </div>
+              <div class="hrv-card">
+                <div class="hrv-metric">6.8 %</div>
+                <div class="hrv-name">pNN50</div>
+                <div class="hrv-norm">Normal &gt; 3 % ✓</div>
+              </div>
+            </div>
+
+            <hr class="divider-strong">
+            <div class="subsection-heading">7-Level BPM Alert System</div>
+            <div class="alert-row">
+              <span class="alert-chip" style="background:#c0392b;color:#fff;">Critical Low (&lt;40)</span>
+              <span class="alert-chip" style="background:#e67e22;color:#fff;">Warning Low (40–50)</span>
+              <span class="alert-chip" style="background:#f1c40f;color:#333;">Slight Low (50–60)</span>
+              <span class="alert-chip" style="background:#27ae60;color:#fff;">Normal (60–100)</span>
+              <span class="alert-chip" style="background:#f1c40f;color:#333;">Slight High (100–120)</span>
+              <span class="alert-chip" style="background:#e67e22;color:#fff;">Warning High (120–150)</span>
+              <span class="alert-chip" style="background:#c0392b;color:#fff;">Critical High (&gt;150)</span>
+            </div>
           </div>
-          <div style="flex:0.8;">
-            <p style="font-size:10px;margin-bottom:4px;"><strong>Key Outcomes</strong></p>
+
+          <!-- RIGHT: Key Outcomes -->
+          <div class="results-right">
+            <p style="font-size:13.5px; font-weight:800; color:#2c2c6e; margin-bottom:7px; font-family:'Raleway',sans-serif;">Key Outcomes</p>
             <ul class="feat-list">
-              <li>Avg MAE <strong>3.9 BPM</strong> across all conditions</li>
-              <li>+11.2 dB total SNR gain from preprocessing</li>
-              <li>Kalman reduced BPM σ from 5.3 → 2.1</li>
-              <li>Age bracket accuracy: <strong>74%</strong></li>
-              <li>Gender accuracy: <strong>89%</strong></li>
-              <li>HR status label accuracy: <strong>91%</strong></li>
-              <li>3-region ROI cut MAE by 1.4 BPM under motion</li>
+              <li>SNR fusion outperforms every individual method.</li>
+              <li>CHROM achieves best single-method accuracy (MAE 5.43 BPM).</li>
+              <li>MediaPipe ROI vastly improves accuracy over Haar.</li>
+              <li>Kalman filter reduces BPM output variance.</li>
+              <li>Age/Gender accuracy: <strong>74% / 89%</strong>.</li>
+              <li>Full 42-subject pipeline: ~18 min on i5 CPU.</li>
+              <li>PDF reports generated in &lt;2 seconds.</li>
             </ul>
           </div>
         </div>
       </div>
 
-      <!-- G. Fun Fact / Highlight -->
+      <!-- H. Live GUI -->
       <div class="fun-fact-section">
         <div class="section-header">
-          <div class="section-letter">G.</div>
-          <div class="section-title">Clinical Significance &amp; Future Scope </div>
+          <div class="section-letter">H.</div>
+          <div class="section-title">Live GUI &amp; Real-Time Monitoring</div>
         </div>
-        <div class="fun-fact-body">
-          <div class="fun-fact-text">
-            <div class="fun-fact-title">A Webcam as Your Cardiologist! ❤️</div>
-            <p>Our system turns any standard laptop camera into a real-time, non-contact heart rate monitor with clinically relevant accuracy — no wearable, no electrode, no cost. It runs entirely in Python on a basic laptop, making it accessible to millions for home health monitoring and telemedicine.</p>
-            <hr class="divider">
-            <p><strong>Future directions:</strong> Deep rPPG models (PhysNet, EfficientPhys) · Respiratory rate from same ROI · HRV metrics (SDNN, RMSSD) for stress detection · Edge deployment on Raspberry Pi / Jetson Nano · Evaluation on MAHNOB-HCI &amp; COHFACE benchmarks</p>
-          </div>
-          <!-- GUI screenshot placeholder -->
-          <div class="img-placeholder" style="width:130px;height:90px;flex-shrink:0;font-size:8.5px;padding:8px;">
-            🖥️<br>Live GUI<br>BPM Waveform<br>Per-Method SNR
+        <div class="section-body">
+          <p style="font-size:13.5px; margin-bottom:8px;">
+            <strong>PyQt5-based real-time monitoring interface</strong> displaying live BPM, HRV metrics (SDNN/RMSSD/pNN50), stress level classification, heart rate trend visualization with Kalman filtering, and pulse signal waveform from the green channel. The GUI supports multi-region ROI visualization, per-algorithm SNR metrics, and one-click PDF clinical report export.
+          </p>
+          <img src="assets/live-gui-screenshot.png" alt="Live Heart Rate Monitor GUI" class="gui-image">
+          <div class="gui-caption">
+            <strong>Figure:</strong> PyQt5 GUI showing live HR (71.4 bpm [Normal]), HRV metrics (SDNN/RMSSD/pNN50), stress indicator (Relaxed 0/100), heart rate trend (Kalman-smoothed in orange), and green channel pulse signal. Real-time processing at ≥15 fps on standard i5 laptop. Subject age: 20–39 (Male).
           </div>
         </div>
       </div>
 
-    </div>
-    <!-- ════ end RIGHT ════ -->
-
-  </div>
-  <!-- ══ end BODY ══ -->
+    </div><!-- end RIGHT -->
+  </div><!-- end BODY -->
 
   <!-- ══ REFERENCES ══ -->
   <div class="references-bar">
-    <h4>References</h4>
+    <h4>Key References</h4>
     <p>
-      [1] G. de Haan &amp; V. Jeanne, "Robust pulse rate from chrominance-based rPPG," IEEE Trans. Biomed. Eng., 2013. &nbsp;|&nbsp;
-      [2] W. Wang et al., "Algorithmic principles of remote PPG," IEEE Trans. Biomed. Eng., 2017. &nbsp;|&nbsp;
-      [3] M.-Z. Poh et al., "Non-contact cardiac pulse measurements using video imaging and blind source separation," Opt. Express, 2010. &nbsp;|&nbsp;
-      [4] W. Verkruysse et al., "Remote plethysmographic imaging using ambient light," Opt. Express, 2008.
+      [1] G. de Haan &amp; V. Jeanne, "Robust pulse rate from chrominance-based rPPG," <em>IEEE Trans. Biomed. Eng.</em>, 2013. &nbsp;|&nbsp;
+      [2] W. Wang et al., "Algorithmic principles of remote PPG," <em>IEEE Trans. Biomed. Eng.</em>, 2017. &nbsp;|&nbsp;
+      [3] M.-Z. Poh et al., "Non-contact cardiac pulse measurements using video imaging and blind source separation," <em>Opt. Express</em>, 2010. &nbsp;|&nbsp;
+      [4] W. Verkruysse et al., "Remote plethysmographic imaging using ambient light," <em>Opt. Express</em>, 2008.
     </p>
   </div>
 
