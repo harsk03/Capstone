@@ -3,3 +3,5 @@ opencv-python
 PyQt5
 pyqtgraph
 mediapipe
+reportlab
+scipy
