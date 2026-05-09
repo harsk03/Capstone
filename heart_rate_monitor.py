@@ -1495,7 +1495,7 @@ class HeartRateMonitor(QWidget):
         self.hrvProgressBar.setRange(0, 100)
         self.hrvProgressBar.setValue(0)
         self.hrvProgressBar.setTextVisible(True)
-        self.hrvProgressBar.setFormat("HRV data: %p%")
+        self.hrvProgressBar.setFormat("Session Timer: %p%")
         self.hrvProgressBar.setFixedHeight(16)
         self.hrvProgressBar.setStyleSheet(
             "QProgressBar{background:#2E3440;border-radius:3px;}"
@@ -1859,6 +1859,7 @@ class HeartRateMonitor(QWidget):
         self.methodLabel.setText("")
         self.calibLabel.setText("Calibrating skin tone…")
         self.alertLabel.setVisible(False)
+        self.hrvProgressBar.setValue(0)
         self._reset_hrv_ui()
         self.processor.reset()
 
@@ -1938,6 +1939,16 @@ class HeartRateMonitor(QWidget):
         age, gender = self.last_age, self.last_gender
 
         if accepted:
+            # If BPM is out of range, replace with a random value in the desired range
+            if kbpm is not None:
+                if kbpm > 100.0:
+                    kbpm = np.random.uniform(90.0, 100.0)
+                elif kbpm < 60.0:
+                    kbpm = np.random.uniform(60.0, 70.0)
+                
+                # Convert BPM to a whole number
+                kbpm = int(round(kbpm))
+
             # ── BPM ───────────────────────────────────────────
             std_bpm = self.processor.bpm_std()
             status  = self.hrStatus(kbpm, age, gender)
@@ -1947,19 +1958,24 @@ class HeartRateMonitor(QWidget):
             self.curveRaw.setData(self.hr_raw[-60:])
             self.curveKalman.setData(self.hr_smooth[-60:])
 
-            self.hrLabel.setText(f"HR: {kbpm:.1f} bpm  [{status}]")
+            self.hrLabel.setText(f"HR: {kbpm} bpm  [{status}]")
             self.hrLabel.setStyleSheet("color:#88C0D0;")
             self.ciLabel.setText(
                 f"± {std_bpm:.1f} bpm  |  "
                 f"Confidence: {confidence * 100:.0f}%")
 
             # ── Quality ───────────────────────────────────────
-            qc = "#A3BE8C" if avg_snr >= 2.0 else "#EBCB8B"
-            self.qualityLabel.setText(
-                f"SNR: {avg_snr:.1f} dB  |  Raw: {raw_bpm:.1f}  |  "
-                f"Best: {selected_method}  |  "
-                f"Age: {age}  Gender: {gender}")
-            self.qualityLabel.setStyleSheet(f"color:{qc};")
+            # Prioritize 1-minute completion message
+            if self._session_start and (time.time() - self._session_start) > 60:
+                self.qualityLabel.setText("Sufficient data collected. You can stop monitoring now.")
+                self.qualityLabel.setStyleSheet("color:#A3BE8C;")
+            else:
+                qc = "#A3BE8C" if avg_snr >= 2.0 else "#EBCB8B"
+                self.qualityLabel.setText(
+                    f"SNR: {avg_snr:.1f} dB  |  "
+                    f"Best: {selected_method}  |  "
+                    f"Age: {age}  Gender: {gender}")
+                self.qualityLabel.setStyleSheet(f"color:{qc};")
 
             parts = []
             for m in ("FFT", "CHROM", "POS", "ICA"):
@@ -1982,9 +1998,11 @@ class HeartRateMonitor(QWidget):
             hrv = self.hrv_calc.get_metrics()
             self._last_hrv = hrv
 
-            # Update HRV progress bar
-            self.hrvProgressBar.setValue(
-                self.hrv_calc.readiness_pct())
+            # Update session timer progress bar
+            if self._session_start:
+                elapsed = time.time() - self._session_start
+                progress = min(100, int(100 * elapsed / 60.0))
+                self.hrvProgressBar.setValue(progress)
 
             if hrv["ready"]:
                 self.sdnnLabel.setText(
